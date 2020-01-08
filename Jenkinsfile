@@ -22,8 +22,12 @@ pipeline {
       stage('Build and Push Image') {
          steps {
            sh 'docker image build -t ${REPOSITORY_TAG} .'
-            sh '${ECR_URI}'
-            sh 'ecr:us-east-1:${ECRLOGIN}'
+            docker {
+               registryUrl '${ECR_URI}'
+               registryCredentialsId 'ecr:us-east-1:ECRLOGIN'
+            }
+               
+               
             sh 'docker push ${REPOSITORY_TAG}'
          }
       }
