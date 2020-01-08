@@ -22,7 +22,7 @@ pipeline {
       stage('Build and Push Image') {
          steps {
            sh 'docker image build -t ${REPOSITORY_TAG} .'
-            sh '$(aws ecr get-login --no-include-email --region ap-south-1)'
+            sh '$(ECR_URI)','ecr:us-east-1:$ECRLOGIN'
             sh 'docker push ${REPOSITORY_TAG}'
          }
       }
