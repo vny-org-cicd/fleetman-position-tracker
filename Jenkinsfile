@@ -22,11 +22,8 @@ pipeline {
       stage('Build and Push Image') {
          steps {
            sh 'docker image build -t ${REPOSITORY_TAG} .'
-           docker {
-               image '${REPOSITORY_TAG}'
-               registryUrl '${ECR_URI}'
-               registryCredentialsId 'ecr:us-east-1:ECRLOGIN'
-           }
+            withDockerRegistry([ credentialsId: "${ECRLOGIN}", url: "${ECR_URI}" ]) {
+      // following commands will be executed within logged docker registry
                
                
             sh 'docker push ${REPOSITORY_TAG}'
