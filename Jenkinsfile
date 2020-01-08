@@ -13,12 +13,6 @@ pipeline {
    }
 
    stages {
-      stage('Preparation') {
-         steps {
-          
-            sh '${ECRLOGIN}'
-         }
-      }
       stage('Build') {
          steps {
             sh '''mvn clean package'''
