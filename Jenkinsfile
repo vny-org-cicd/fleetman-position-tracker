@@ -27,6 +27,7 @@ pipeline {
                
                
             sh 'docker push ${REPOSITORY_TAG}'
+            }
          }
       }
 
