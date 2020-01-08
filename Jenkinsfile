@@ -16,7 +16,7 @@ pipeline {
       stage('Preparation') {
          steps {
             cleanWs()
-            sh '${ECRLOGIN}
+            sh '${ECRLOGIN}'
          }
       }
       stage('Build') {
