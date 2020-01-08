@@ -15,7 +15,7 @@ pipeline {
    stages {
       stage('Preparation') {
          steps {
-            cleanWs()
+          
             sh '${ECRLOGIN}'
          }
       }
