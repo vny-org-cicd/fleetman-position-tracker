@@ -23,6 +23,7 @@ pipeline {
          steps {
            sh 'docker image build -t ${REPOSITORY_TAG} .'
             docker {
+               image '${REPOSITORY_TAG}'
                registryUrl '${ECR_URI}'
                registryCredentialsId 'ecr:us-east-1:ECRLOGIN'
             }
